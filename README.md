@@ -1,4 +1,4 @@
-![Thermostat!]()
+![Thermostat!](http://energysquad.com/sites/default/files/automation-thumbnail-icons/automation-thermostats-icon.png)
 
 JavaScript Thermostat Challenge
 --
