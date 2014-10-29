@@ -45,7 +45,46 @@ describe("Thermostat", function(){
     })
 
   })
-  
+
+  describe('PSM off ', function(){
+    it("increases the temperature if < 32", function(){
+      thermostat.powerSavingMode = false;
+      thermostat.warmer();
+      expect(thermostat.temperature).toEqual(21)
+    })
+
+    it("does nothing to the temperature if >= 32", function(){
+      thermostat.powerSavingMode = false;
+      thermostat.temperature = 32
+      thermostat.warmer();
+      expect(thermostat.temperature).toEqual(32)
+
+    })
+
+  })
+ })
+
+ describe('cooler', function(){
+  it("decreases the temperature if > 10", function(){
+    thermostat.cooler ();
+    expect(thermostat.temperature).toEqual(19)
+  })
+
+  it("does nothing to the temperature if <= 10", function(){
+    thermostat.temperature = 10
+    thermostat.cooler();
+    expect(thermostat.temperature).toEqual(10)
+
+    })
+
+  })
+
+ describe('reset', function(){
+  it("resets the temperature to 20", function(){
+   thermostat.temperature = 25
+   thermostat.reset();
+   expect(thermostat.temperature).toEqual(20)
+  });
  })
 
 });
