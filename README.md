@@ -20,11 +20,17 @@ Requirements for the client:
 
 Instructions:
 --
-
+For interface - Run the index.html from your directory in a browser.
+For Jasmine Tests - Run the Specrunner file in the browser.
 
 Lessons Learned:
 --
-
+* More JavaScript!
+* Building tests to construct the client's provided requirements.
+* Drying JQuery code.
+* Adding and removing classes via script lines.
 
 Problems With The Code:
 --
+* Basic interface.
+* JQuery tested via trial and error via browser.
