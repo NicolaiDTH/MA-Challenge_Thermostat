@@ -22,12 +22,14 @@ describe("Thermostat", function(){
    thermostat.powerSavingMode = false;
    expect(thermostat.maximumTemperature()).toEqual(32);
   })
+
  })
 
  describe("Minimum Temperature", function(){
   it("is 10 degrees", function(){
   expect(thermostat.minimumTemperature()).toEqual(10);
   })
+
  });
 
  describe('warmer', function(){
@@ -47,35 +49,36 @@ describe("Thermostat", function(){
   })
 
   describe('PSM off ', function(){
-    it("increases the temperature if < 32", function(){
-      thermostat.powerSavingMode = false;
-      thermostat.warmer();
-      expect(thermostat.temperature).toEqual(21)
-    })
+   it("increases the temperature if < 32", function(){
+    thermostat.powerSavingMode = false;
+    thermostat.warmer();
+    expect(thermostat.temperature).toEqual(21)
+   })
 
-    it("does nothing to the temperature if >= 32", function(){
-      thermostat.powerSavingMode = false;
-      thermostat.temperature = 32
-      thermostat.warmer();
-      expect(thermostat.temperature).toEqual(32)
+   it("does nothing to the temperature if >= 32", function(){
+    thermostat.powerSavingMode = false;
+    thermostat.temperature = 32
+    thermostat.warmer();
+    expect(thermostat.temperature).toEqual(32)
 
-    })
+   })
 
   })
+
  })
 
  describe('cooler', function(){
   it("decreases the temperature if > 10", function(){
-    thermostat.cooler ();
-    expect(thermostat.temperature).toEqual(19)
+   thermostat.cooler ();
+   expect(thermostat.temperature).toEqual(19)
   })
 
   it("does nothing to the temperature if <= 10", function(){
-    thermostat.temperature = 10
-    thermostat.cooler();
-    expect(thermostat.temperature).toEqual(10)
+   thermostat.temperature = 10
+   thermostat.cooler();
+   expect(thermostat.temperature).toEqual(10)
 
-    })
+   })
 
   })
 
@@ -84,6 +87,23 @@ describe("Thermostat", function(){
    thermostat.temperature = 25
    thermostat.reset();
    expect(thermostat.temperature).toEqual(20)
+  });
+ })
+
+ describe('energy usage', function(){
+  it("is high if >= 25", function(){
+   thermostat.temperature = 26
+   expect(thermostat.energyUsage()).toEqual('high')
+  });
+
+  it("is medium if >=  18 and < 25", function(){
+   thermostat.temperature = 20
+   expect(thermostat.energyUsage()).toEqual('medium')
+  });
+
+  it("is low if < 18", function(){
+   thermostat.temperature = 16
+   expect(thermostat.energyUsage()).toEqual('low')
   });
  })
 
